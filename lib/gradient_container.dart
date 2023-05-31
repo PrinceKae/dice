@@ -1,27 +1,39 @@
-import 'package:floppy/styled.dart';
 import 'package:flutter/material.dart';
 
-class GradientContainer extends StatelessWidget {
-  const GradientContainer({super.key});
+const startAlignment =  Alignment.topLeft;
+const endAlignment =   Alignment.bottomRight;
 
-  // This widget is the root of your application.
+
+ class GradientContainer extends StatelessWidget {
+  const GradientContainer(this.color1, this.color2,{super.key,});
+final Color color1;
+final Color color2;
+
+void rollDice (){
+
+}
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            Colors.deepPurple,
-            Colors.deepPurpleAccent,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          colors: [color1, color2],
+          begin:startAlignment,
+          end: endAlignment,
         ),
       ),
-      child: const Center(
-      child:  StyledText(),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/dice-6.png',
+              width: 200,
+            ),
+            TextButton(onPressed: rollDice, child: Text('Roll Dice'))
+          ],
+        ),
       ),
-
     );
   }
 }
